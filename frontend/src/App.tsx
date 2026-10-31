@@ -13,6 +13,7 @@ import { ReportViewer } from './components/ReportViewer';
 import { AdminPanel } from './components/AdminPanel';
 import { Investigation, ResearchRequirement, InformationGap, Conflict } from './types';
 import { apiClient } from './api/client';
+import { cyberAudio } from './utils/soundEffects';
 import { 
   FileText, 
   Layers, 
@@ -121,7 +122,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#02040a] text-slate-100 flex flex-col font-sans bg-cyber-grid bg-radial-nebula">
       <Navigation
         currentView={currentView}
         setCurrentView={setCurrentView}
@@ -145,6 +146,7 @@ export const App: React.FC = () => {
             investigations={investigations}
             onSelectInvestigation={handleSelectInvestigation}
             onCreateNew={() => {
+              cyberAudio.playClick();
               setActiveInvestigation(null);
               setCurrentView('investigation');
             }}
@@ -156,22 +158,28 @@ export const App: React.FC = () => {
         {currentView === 'investigation' && (
           <div className="space-y-6">
             {activeInvestigation && (
-              /* Sub-Navigation for Active Investigation */
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-3">
-                <div className="flex flex-wrap items-center space-x-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs">
+              /* Sphinx Sub-Navigation for Active Investigation */
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-cyan-500/20 pb-3">
+                <div className="flex flex-wrap items-center space-x-1.5 bg-[#060a17]/90 p-1.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
                   <button
-                    onClick={() => setInvTab('studio')}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      invTab === 'studio' ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' : 'text-slate-400 hover:text-white'
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setInvTab('studio');
+                    }}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                      invTab === 'studio' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <span>Overview & Sources</span>
                   </button>
 
                   <button
-                    onClick={() => setInvTab('requirements')}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      invTab === 'requirements' ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' : 'text-slate-400 hover:text-white'
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setInvTab('requirements');
+                    }}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                      invTab === 'requirements' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <Layers className="w-3.5 h-3.5" />
@@ -179,19 +187,25 @@ export const App: React.FC = () => {
                   </button>
 
                   <button
-                    onClick={() => setInvTab('gaps')}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      invTab === 'gaps' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-slate-400 hover:text-white'
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setInvTab('gaps');
+                    }}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                      invTab === 'gaps' ? 'bg-[#e2b65c]/20 text-[#e2b65c] border border-[#e2b65c]/40 shadow-[0_0_12px_rgba(226,182,92,0.25)]' : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                    <AlertTriangle className="w-3.5 h-3.5 text-[#e2b65c]" />
                     <span>Gaps & Conflicts</span>
                   </button>
 
                   <button
-                    onClick={() => setInvTab('graph')}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      invTab === 'graph' ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' : 'text-slate-400 hover:text-white'
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setInvTab('graph');
+                    }}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                      invTab === 'graph' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <Network className="w-3.5 h-3.5" />
@@ -199,9 +213,12 @@ export const App: React.FC = () => {
                   </button>
 
                   <button
-                    onClick={() => setInvTab('copilot')}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      invTab === 'copilot' ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' : 'text-slate-400 hover:text-white'
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setInvTab('copilot');
+                    }}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                      invTab === 'copilot' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <ListTodo className="w-3.5 h-3.5" />
@@ -209,9 +226,12 @@ export const App: React.FC = () => {
                   </button>
 
                   <button
-                    onClick={() => setInvTab('readiness')}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
-                      invTab === 'readiness' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'text-slate-400 hover:text-white'
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setInvTab('readiness');
+                    }}
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                      invTab === 'readiness' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.25)]' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <Scale className="w-3.5 h-3.5 text-emerald-400" />
@@ -221,18 +241,22 @@ export const App: React.FC = () => {
 
                 <div className="flex items-center space-x-2">
                   <button
-                    onClick={() => setShowReportModal(true)}
-                    className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-200 text-xs font-semibold transition-all"
+                    onClick={() => {
+                      cyberAudio.playClick();
+                      setShowReportModal(true);
+                    }}
+                    className="hud-corner flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#060a17] border border-cyan-500/30 hover:border-[#00d2ff] text-slate-200 text-xs font-mono font-bold transition-all"
                   >
-                    <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                    <FileText className="w-3.5 h-3.5 text-[#00d2ff]" />
                     <span>Report Dossier</span>
                   </button>
 
                   <button
                     onClick={() => {
+                      cyberAudio.playClick();
                       setActiveInvestigation(null);
                     }}
-                    className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all"
+                    className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-[#060a17] hover:bg-slate-800 border border-cyan-500/20 text-slate-300 text-xs font-mono font-bold transition-all"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>New</span>
@@ -295,11 +319,22 @@ export const App: React.FC = () => {
         {currentView === 'admin' && <AdminPanel />}
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-[#060910] py-6 text-center text-xs text-slate-400 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>BLINDSPOT AI • Epistemic Research Intelligence Platform</span>
-          <span className="font-mono text-cyan-500">Argon2id • SSRF Immunity • 100% Traceability</span>
+      {/* Sphinx Cyber Footer */}
+      <footer className="border-t border-cyan-500/20 bg-[#02040a] py-6 text-center text-xs text-slate-400 mt-auto font-mono">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 rounded-full bg-[#00d2ff] animate-ping" />
+            <span className="font-bold text-slate-200">BLINDSPOT AI</span>
+            <span className="text-slate-600">•</span>
+            <span>SPHINX EPISTEMIC RESEARCH EDITION</span>
+          </div>
+          <div className="flex items-center space-x-3 text-[11px]">
+            <span className="text-[#00d2ff]">RFC 9106 ARGON2ID</span>
+            <span className="text-slate-600">|</span>
+            <span className="text-[#e2b65c]">DNS SSRF SHIELD</span>
+            <span className="text-slate-600">|</span>
+            <span className="text-emerald-400">100% EVIDENCE TRACEABILITY</span>
+          </div>
         </div>
       </footer>
     </div>
