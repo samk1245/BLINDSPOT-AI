@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+ENV/
+.venv/
+
+# Database & Storage
+*.sqlite
+*.sqlite3
+*.db
+backend/blindspot.db
+uploads/
+backend/uploads/
+
+# Environment and Secrets (CRITICAL)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+*.pfx
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+frontend/dist/
+frontend/build/
+.cache/
+
+# Vite
+.vite/
+frontend/.vite/
+
+# Testing & Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
