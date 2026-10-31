@@ -10,7 +10,7 @@ import {
   Edge 
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { Network, X, Fingerprint, Calendar, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Network, X, Fingerprint, Calendar, ExternalLink, ShieldCheck, ZoomIn, Info } from 'lucide-react';
 import { apiClient } from '../api/client';
 
 interface EvidenceTraceabilityGraphProps {
@@ -29,32 +29,38 @@ export const EvidenceTraceabilityGraph: React.FC<EvidenceTraceabilityGraphProps>
       try {
         const res = await apiClient.get(`/intelligence/${investigationId}/graph`);
         
-        // Style nodes according to their node type
+        // Realistic multi-chromatic node styling
         const styledNodes = (res.data.nodes || []).map((node: any) => {
-          let bg = '#0f172a';
-          let border = '#334155';
-          let text = '#f8fafc';
+          let bg = '#121826';
+          let border = '#26334d';
+          let text = '#f1f5f9';
+          let iconColor = '#818cf8';
 
           switch (node.data?.type) {
             case 'OBJECTIVE':
-              bg = 'rgba(6, 182, 212, 0.15)';
-              border = '#06b6d4';
+              bg = '#141c2e';
+              border = '#3b82f6';
+              iconColor = '#60a5fa';
               break;
             case 'REQUIREMENT':
-              bg = 'rgba(56, 189, 248, 0.12)';
-              border = '#38bdf8';
+              bg = '#16192e';
+              border = '#6366f1';
+              iconColor = '#818cf8';
               break;
             case 'SOURCE':
-              bg = 'rgba(168, 85, 247, 0.15)';
-              border = '#a855f7';
+              bg = '#10221e';
+              border = '#10b981';
+              iconColor = '#34d399';
               break;
             case 'GAP':
-              bg = 'rgba(245, 158, 11, 0.15)';
+              bg = '#221910';
               border = '#f59e0b';
+              iconColor = '#fbbf24';
               break;
             case 'CONFLICT':
-              bg = 'rgba(239, 68, 68, 0.15)';
-              border = '#ef4444';
+              bg = '#251218';
+              border = '#f43f5e';
+              iconColor = '#fb7185';
               break;
           }
 
@@ -64,12 +70,14 @@ export const EvidenceTraceabilityGraph: React.FC<EvidenceTraceabilityGraphProps>
               background: bg,
               border: `1.5px solid ${border}`,
               color: text,
-              borderRadius: '12px',
-              padding: '12px',
+              borderRadius: '10px',
+              padding: '12px 14px',
               fontSize: '12px',
-              width: 220,
-              boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
+              fontWeight: 500,
+              width: 230,
+              boxShadow: '0 8px 24px -4px rgba(0,0,0,0.45)',
               cursor: 'pointer',
+              transition: 'all 0.2s ease',
             },
           };
         });
@@ -90,24 +98,50 @@ export const EvidenceTraceabilityGraph: React.FC<EvidenceTraceabilityGraphProps>
   };
 
   return (
-    <div className="p-6 rounded-2xl glass-panel space-y-4">
-      <div className="flex items-center justify-between">
+    <div className="p-6 rounded-2xl panel-card space-y-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h3 className="text-base font-bold text-white flex items-center space-x-2">
-            <Network className="w-4 h-4 text-cyan-400" />
+          <h3 className="text-base font-bold text-slate-100 flex items-center space-x-2">
+            <Network className="w-4 h-4 text-indigo-400" />
             <span>Interactive Evidence Traceability Graph</span>
           </h3>
           <p className="text-xs text-slate-400">
             Directed acyclic graph linking objectives, decomposed criteria, fingerprinted sources, gaps, and contradictions.
           </p>
         </div>
-        <span className="text-xs font-mono text-cyan-400">Click any node to inspect provenance</span>
+        
+        {/* Node Legend */}
+        <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+          <span className="flex items-center space-x-1 px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800/60 text-blue-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+            <span>Objective</span>
+          </span>
+          <span className="flex items-center space-x-1 px-2 py-0.5 rounded bg-indigo-950/60 border border-indigo-800/60 text-indigo-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+            <span>Requirement</span>
+          </span>
+          <span className="flex items-center space-x-1 px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-800/60 text-emerald-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>Source</span>
+          </span>
+          <span className="flex items-center space-x-1 px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/60 text-amber-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span>Gap</span>
+          </span>
+          <span className="flex items-center space-x-1 px-2 py-0.5 rounded bg-rose-950/60 border border-rose-800/60 text-rose-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+            <span>Conflict</span>
+          </span>
+        </div>
       </div>
 
-      <div className="relative h-[540px] w-full rounded-xl overflow-hidden border border-slate-800 bg-[#060910]">
+      <div className="relative h-[560px] w-full rounded-xl overflow-hidden border border-[#222f46] bg-[#090d16]">
         {isLoading ? (
           <div className="h-full flex items-center justify-center text-slate-400 text-xs font-mono">
-            Loading DAG Evidence Mesh...
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+              <span>Rendering Directed Evidence Mesh...</span>
+            </div>
           </div>
         ) : (
           <ReactFlow
@@ -118,56 +152,57 @@ export const EvidenceTraceabilityGraph: React.FC<EvidenceTraceabilityGraphProps>
             onNodeClick={onNodeClick}
             fitView
           >
-            <Background color="#1e293b" gap={16} />
-            <Controls className="bg-slate-900 border-slate-700 text-white" />
+            <Background color="#1a2438" gap={20} size={1} />
+            <Controls className="!bg-[#0e1422] !border-[#222f46] !text-slate-300" />
             <MiniMap 
               nodeColor={(n: any) => {
-                if (n.data?.type === 'OBJECTIVE') return '#06b6d4';
-                if (n.data?.type === 'SOURCE') return '#a855f7';
+                if (n.data?.type === 'OBJECTIVE') return '#3b82f6';
+                if (n.data?.type === 'SOURCE') return '#10b981';
                 if (n.data?.type === 'GAP') return '#f59e0b';
-                if (n.data?.type === 'CONFLICT') return '#ef4444';
-                return '#38bdf8';
+                if (n.data?.type === 'CONFLICT') return '#f43f5e';
+                return '#6366f1';
               }} 
-              className="bg-slate-900 border-slate-800 rounded-lg"
+              className="!bg-[#0e1422] !border-[#222f46] rounded-lg"
             />
           </ReactFlow>
         )}
 
         {/* Node Detail Inspector Drawer */}
         {selectedNode && (
-          <div className="absolute top-4 right-4 z-20 w-80 sm:w-96 rounded-xl bg-slate-900/95 border border-slate-700 shadow-2xl p-5 space-y-3 backdrop-blur-md animate-fadeIn">
+          <div className="absolute top-4 right-4 z-20 w-80 sm:w-96 rounded-xl bg-[#0e1422]/95 border border-[#26334d] shadow-2xl p-5 space-y-3 backdrop-blur-md animate-fadeIn">
             <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-              <span className="text-[11px] font-mono font-bold uppercase text-cyan-400">
-                Node Inspector: {selectedNode.type}
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-400 flex items-center space-x-1.5">
+                <Info className="w-3.5 h-3.5" />
+                <span>Node Inspector: {selectedNode.type}</span>
               </span>
               <button 
                 onClick={() => setSelectedNode(null)} 
-                className="text-slate-400 hover:text-white"
+                className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800/80 transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <h4 className="text-sm font-bold text-white">{selectedNode.label}</h4>
               
               {selectedNode.subtitle && (
-                <p className="text-xs text-slate-300 font-mono italic">{selectedNode.subtitle}</p>
+                <p className="text-xs text-indigo-300/90 font-mono italic">{selectedNode.subtitle}</p>
               )}
 
               {selectedNode.description && (
-                <p className="text-xs text-slate-300">{selectedNode.description}</p>
+                <p className="text-xs text-slate-300 leading-relaxed">{selectedNode.description}</p>
               )}
 
               {/* Source Evidence Snippet */}
               {selectedNode.evidenceSnippet && (
-                <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1.5 text-xs">
+                <div className="p-3 rounded-lg bg-[#070b13] border border-[#1e293b] space-y-1.5 text-xs">
                   <div className="flex items-center justify-between text-slate-400 text-[10px]">
-                    <span className="flex items-center space-x-1 text-cyan-400 font-bold uppercase">
+                    <span className="flex items-center space-x-1 text-emerald-400 font-bold uppercase">
                       <Fingerprint className="w-3 h-3" />
                       <span>Verbatim Evidence Passage:</span>
                     </span>
-                    <span className="font-mono">{selectedNode.fingerprint}</span>
+                    <span className="font-mono text-slate-400">{selectedNode.fingerprint}</span>
                   </div>
                   <p className="text-slate-300 italic font-mono text-[11px] leading-relaxed">
                     "{selectedNode.evidenceSnippet}"
@@ -181,20 +216,20 @@ export const EvidenceTraceabilityGraph: React.FC<EvidenceTraceabilityGraphProps>
                   <span className="text-amber-400 font-bold uppercase text-[10px] block">
                     Epistemic Caveat:
                   </span>
-                  <p className="text-slate-300 italic text-[11px]">{selectedNode.epistemicNote}</p>
+                  <p className="text-slate-300 italic text-[11px] leading-relaxed">{selectedNode.epistemicNote}</p>
                 </div>
               )}
 
               {/* Conflict Dual Claims */}
               {selectedNode.claimA && selectedNode.claimB && (
                 <div className="space-y-2 text-xs pt-1">
-                  <div className="p-2 rounded bg-slate-950 border border-slate-800">
-                    <span className="text-cyan-400 text-[10px] uppercase font-bold block">{selectedNode.sourceA}:</span>
-                    <p className="text-slate-200 text-[11px]">"{selectedNode.claimA}"</p>
+                  <div className="p-2.5 rounded bg-[#070b13] border border-[#1e293b]">
+                    <span className="text-sky-400 text-[10px] uppercase font-bold block mb-1">{selectedNode.sourceA}:</span>
+                    <p className="text-slate-200 text-[11px] leading-relaxed">"{selectedNode.claimA}"</p>
                   </div>
-                  <div className="p-2 rounded bg-slate-950 border border-slate-800">
-                    <span className="text-violet-400 text-[10px] uppercase font-bold block">{selectedNode.sourceB}:</span>
-                    <p className="text-slate-200 text-[11px]">"{selectedNode.claimB}"</p>
+                  <div className="p-2.5 rounded bg-[#070b13] border border-[#1e293b]">
+                    <span className="text-rose-400 text-[10px] uppercase font-bold block mb-1">{selectedNode.sourceB}:</span>
+                    <p className="text-slate-200 text-[11px] leading-relaxed">"{selectedNode.claimB}"</p>
                   </div>
                 </div>
               )}

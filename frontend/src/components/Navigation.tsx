@@ -11,19 +11,23 @@ import {
   UserCheck,
   Volume2,
   VolumeX,
-  Activity
+  Shield,
+  Layers,
+  Database
 } from 'lucide-react';
 
 interface NavigationProps {
   currentView: 'landing' | 'dashboard' | 'investigation' | 'admin';
   setCurrentView: (view: 'landing' | 'dashboard' | 'investigation' | 'admin') => void;
   hasActiveInvestigation: boolean;
+  onSeedAllDemos?: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   currentView,
   setCurrentView,
   hasActiveInvestigation,
+  onSeedAllDemos
 }) => {
   const { user, logout, quickDemoLogin } = useAuth();
   const [isMuted, setIsMuted] = useState(cyberAudio.getIsMuted());
@@ -39,85 +43,89 @@ export const Navigation: React.FC<NavigationProps> = ({
   };
 
   return (
-    <nav className="border-b border-cyan-500/20 bg-[#02040a]/90 backdrop-blur-xl sticky top-0 z-50 px-4 lg:px-8 py-3 transition-all relative">
-      {/* Top micro-line glow in Cyber Cyan */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#00d2ff] to-transparent opacity-60" />
-
+    <nav className="border-b border-slate-800/80 bg-[#0c111d]/90 backdrop-blur-xl sticky top-0 z-50 px-4 lg:px-8 py-3 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
-        {/* Logo and Cyber Brand */}
+        {/* Brand & Logo */}
         <div 
           onClick={() => handleNavClick(user ? 'dashboard' : 'landing')} 
-          className="flex items-center space-x-3 cursor-pointer group"
+          className="flex items-center space-x-3 cursor-pointer group select-none"
         >
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00d2ff]/20 via-[#0e1933] to-[#e2b65c]/20 border border-[#00d2ff]/40 flex items-center justify-center shadow-lg shadow-[#00d2ff]/15 group-hover:border-[#00d2ff] group-hover:shadow-[#00d2ff]/30 transition-all">
-            <Eye className="w-5 h-5 text-[#00d2ff] group-hover:scale-110 transition-transform" />
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-500 flex items-center justify-center shadow-md shadow-indigo-950/50 group-hover:scale-105 transition-transform">
+            <Eye className="w-4.5 h-4.5 text-white" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="font-black tracking-widest text-lg text-white font-mono flex items-center">
-                BLINDSPOT<span className="text-[#00d2ff] ml-1">AI</span>
-                <span className="text-[#e2b65c] text-xs ml-1">✦</span>
+              <span className="font-extrabold tracking-tight text-lg text-white font-sans">
+                BLINDSPOT<span className="text-indigo-400 ml-1">AI</span>
               </span>
-              <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/30 uppercase tracking-wider">
-                EPISTEMIC CORE
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">
+                v1.0 ACTIVE
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 font-mono tracking-tight flex items-center space-x-1.5">
-              <span>DISCOVER WHAT'S MISSING</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-[#00d2ff] font-semibold">ENTERPRISE INTELLIGENCE</span>
+            <p className="text-[11px] text-slate-400 font-medium tracking-tight">
+              Don't Just Find Answers. Discover What's Missing.
             </p>
           </div>
         </div>
 
-        {/* Live Telemetry Pill */}
-        <div className="hidden xl:flex items-center space-x-2 px-3 py-1 rounded-full bg-[#060a17] border border-cyan-500/20 text-[11px] font-mono text-slate-400">
-          <Activity className="w-3.5 h-3.5 text-[#00d2ff] animate-pulse" />
-          <span className="text-[#00d2ff] font-bold">TELEMETRY:</span>
-          <span>SSRF SHIELD ACTIVE</span>
-          <span className="text-slate-600">|</span>
-          <span className="text-[#e2b65c]">ARGON2ID</span>
+        {/* Live Multi-Chromatic Telemetry Indicators */}
+        <div className="hidden lg:flex items-center space-x-3 text-xs font-mono">
+          <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-emerald-400 font-bold">SSRF SHIELD:</span>
+            <span>DNS ISOLATED</span>
+          </div>
+
+          <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+            <span className="text-amber-400 font-bold">AUTH:</span>
+            <span>ARGON2ID</span>
+          </div>
+
+          <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
+            <span className="text-indigo-400 font-bold">HASH:</span>
+            <span>SHA-256 PASSAGES</span>
+          </div>
         </div>
 
         {/* Navigation Tabs */}
         {user && (
-          <div className="hidden md:flex items-center space-x-1.5 bg-[#060a17]/90 p-1.5 rounded-xl border border-cyan-500/20">
+          <div className="hidden md:flex items-center space-x-1 bg-slate-900/90 p-1 rounded-xl border border-slate-800/80">
             <button
               onClick={() => handleNavClick('dashboard')}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 currentView === 'dashboard'
-                  ? 'bg-gradient-to-r from-[#00d2ff]/20 to-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_15px_rgba(0,210,255,0.2)]'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
               }`}
             >
               <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>DASHBOARD</span>
+              <span>Dashboard</span>
             </button>
 
             <button
               onClick={() => handleNavClick('investigation')}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 currentView === 'investigation'
-                  ? 'bg-gradient-to-r from-[#00d2ff]/20 to-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_15px_rgba(0,210,255,0.2)]'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
               }`}
             >
               <Search className="w-3.5 h-3.5" />
-              <span>{hasActiveInvestigation ? 'ACTIVE STUDIO' : 'NEW INVESTIGATION'}</span>
+              <span>{hasActiveInvestigation ? 'Active Investigation' : 'New Investigation'}</span>
             </button>
 
             {user.role === 'ADMIN' && (
               <button
                 onClick={() => handleNavClick('admin')}
-                className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+                className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   currentView === 'admin'
-                    ? 'bg-gradient-to-r from-[#e2b65c]/20 to-[#e2b65c]/10 text-[#e2b65c] border border-[#e2b65c]/40 shadow-[0_0_15px_rgba(226,182,92,0.2)]'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                    ? 'bg-rose-600/90 text-white shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                 }`}
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-[#e2b65c]" />
-                <span>SEC ADMIN</span>
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Admin</span>
               </button>
             )}
           </div>
@@ -125,13 +133,28 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         {/* User Status, Audio Toggle & Quick Actions */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          {/* Cyber Audio Mute/Unmute Toggle */}
+          {/* Seed Full Intelligence Suite Button */}
+          {onSeedAllDemos && user && (
+            <button
+              onClick={() => {
+                cyberAudio.playScan();
+                onSeedAllDemos();
+              }}
+              title="Load full suite of 4 realistic investigations across Healthcare, Legal, Energy, and Education"
+              className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-400 border border-emerald-500/30 text-xs font-semibold transition-all"
+            >
+              <Database className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Seed 4 Domains</span>
+            </button>
+          )}
+
+          {/* Sound Toggle */}
           <button
             onClick={handleAudioToggle}
-            title={isMuted ? "Enable Cyber Sound Effects" : "Mute Sound Effects"}
-            className="p-2 rounded-lg bg-[#060a17] border border-cyan-500/20 text-slate-400 hover:text-[#00d2ff] hover:border-cyan-500/40 transition-all"
+            title={isMuted ? "Enable Sound Feedback" : "Mute Sound Feedback"}
+            className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-indigo-400 transition-colors"
           >
-            {isMuted ? <VolumeX className="w-4 h-4 text-slate-500" /> : <Volume2 className="w-4 h-4 text-[#00d2ff]" />}
+            {isMuted ? <VolumeX className="w-4 h-4 text-slate-500" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
           </button>
 
           {!user ? (
@@ -140,10 +163,10 @@ export const Navigation: React.FC<NavigationProps> = ({
                 cyberAudio.playScan();
                 quickDemoLogin();
               }}
-              className="hud-corner relative flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-mono font-black uppercase tracking-wider bg-gradient-to-r from-[#00d2ff] via-[#00a6ff] to-[#e2b65c] text-black shadow-lg shadow-[#00d2ff]/25 hover:shadow-[#00d2ff]/50 transition-all hover:scale-105 active:scale-95 animate-shimmer"
+              className="flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/25 transition-all hover:scale-102 active:scale-98"
             >
-              <Sparkles className="w-4 h-4 text-black" />
-              <span>ACCESS DEMO</span>
+              <Sparkles className="w-4 h-4" />
+              <span>Open Platform (Demo)</span>
             </button>
           ) : (
             <div className="flex items-center space-x-2 sm:space-x-3">
@@ -151,12 +174,12 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <span className="text-xs font-semibold text-slate-200">
                   {user.full_name || user.email.split('@')[0]}
                 </span>
-                <span className="text-[9px] font-mono uppercase tracking-widest text-[#00d2ff] font-bold">
-                  {user.role} VERIFIED
+                <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold">
+                  {user.role} ACCESS
                 </span>
               </div>
 
-              <div className="w-8 h-8 rounded-lg bg-[#060a17] border border-cyan-500/30 flex items-center justify-center text-[#00d2ff]">
+              <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-indigo-400">
                 <UserCheck className="w-4 h-4" />
               </div>
 

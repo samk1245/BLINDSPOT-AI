@@ -12,10 +12,13 @@ import {
   AlertTriangle,
   FileQuestion,
   Fingerprint,
-  Terminal,
   Activity,
-  Cpu,
-  Sparkles
+  Layers,
+  Sparkles,
+  Stethoscope,
+  Scale,
+  Zap,
+  GraduationCap
 } from 'lucide-react';
 import { ThreeEvidenceGlobe } from './ThreeEvidenceGlobe';
 import { useAuth } from '../context/AuthContext';
@@ -36,140 +39,155 @@ export const LandingHero: React.FC<{ onGetStarted: () => void }> = ({ onGetStart
   };
 
   return (
-    <div className="relative overflow-hidden bg-cyber-grid bg-radial-nebula">
-      {/* Laser Scanline Beam Effect */}
-      <div className="scanline" />
+    <div className="relative overflow-hidden">
+      {/* Telemetry Status Bar */}
+      <div className="border-y border-slate-800 bg-[#0d131f]/90 backdrop-blur-md py-2.5 select-none">
+        <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+          <div className="flex items-center space-x-2 text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-bold">EPISTEMIC CORE:</span>
+            <span className="text-slate-300">ONLINE & VERIFIED</span>
+          </div>
 
-      {/* LIVE TELEMETRY MARQUEE TICKER */}
-      <div className="border-y border-cyan-500/20 bg-[#030611]/80 backdrop-blur-md overflow-hidden py-2 select-none">
-        <div className="animate-marquee flex items-center space-x-8 text-xs font-mono tracking-wider">
-          <span className="flex items-center space-x-2 text-[#00d2ff]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00d2ff] animate-ping" />
-            <span className="font-bold">CORE_SYS:</span>
-            <span>BLINDSPOT REASONING ENGINE ONLINE</span>
-          </span>
-          <span className="text-slate-600">✦</span>
-          <span className="flex items-center space-x-2 text-[#e2b65c]">
-            <Lock className="w-3.5 h-3.5 text-[#e2b65c]" />
+          <div className="flex items-center space-x-2 text-indigo-400">
+            <Lock className="w-3.5 h-3.5 text-indigo-400" />
             <span className="font-bold">SECURITY:</span>
-            <span>RFC-9106 ARGON2ID + SSRF DNS SHIELD (0.0.0.0/8 FILTERED)</span>
-          </span>
-          <span className="text-slate-600">✦</span>
-          <span className="flex items-center space-x-2 text-emerald-400">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="font-bold">EPISTEMIC AUDIT:</span>
-            <span>100% EVIDENCE TRACEABILITY TO SHA-256 PASSAGES</span>
-          </span>
-          <span className="text-slate-600">✦</span>
-          <span className="flex items-center space-x-2 text-violet-400">
-            <Activity className="w-3.5 h-3.5 text-violet-400" />
-            <span className="font-bold">CONTRADICTION DETECTOR:</span>
-            <span>ACTIVE (DIFFERENTIAL CLAIMS ENGINE)</span>
-          </span>
-          <span className="text-slate-600">✦</span>
-          <span className="flex items-center space-x-2 text-[#00d2ff]">
-            <Cpu className="w-3.5 h-3.5 text-[#00d2ff]" />
+            <span className="text-slate-300">RFC 9106 ARGON2ID + SSRF DNS SHIELD</span>
+          </div>
+
+          <div className="flex items-center space-x-2 text-amber-400">
+            <Activity className="w-3.5 h-3.5 text-amber-400" />
+            <span className="font-bold">PROVENANCE:</span>
+            <span className="text-slate-300">100% SHA-256 EVIDENCE CITATIONS</span>
+          </div>
+
+          <div className="hidden sm:flex items-center space-x-2 text-sky-400">
             <span className="font-bold">LATENCY:</span>
-            <span>0.03s FAST API ENGINE</span>
-          </span>
+            <span className="text-slate-300">0.03s FAST API ENGINE</span>
+          </div>
         </div>
       </div>
 
       {/* Hero Section */}
-      <div className="relative max-w-7xl mx-auto px-4 lg:px-8 pt-14 pb-20">
+      <div className="relative max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Hero Content */}
           <motion.div 
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-7 space-y-6"
           >
-            {/* Tech Badge */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#060a1a] border border-[#00d2ff]/40 text-[#00d2ff] text-xs font-mono tracking-widest uppercase">
-              <span className="w-2 h-2 rounded-full bg-[#00d2ff] animate-pulse" />
-              <span>EPISTEMIC RESEARCH INTELLIGENCE</span>
+            {/* Multi-Chromatic Pill */}
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-950/40 border border-indigo-500/30 text-indigo-300 text-xs font-medium">
+              <span className="w-2 h-2 rounded-full bg-indigo-400" />
+              <span>Next-Gen Epistemic Intelligence Platform</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] font-mono">
-              DON'T JUST FIND ANSWERS. <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00d2ff] via-[#e2b65c] to-[#9a6cff] text-glow-cyan">
-                DISCOVER WHAT'S MISSING.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
+              Don't Just Find Answers. <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400">
+                Discover What's Missing.
               </span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
-              Standard AI summarizes what it finds. <strong className="text-[#00d2ff] font-semibold">BLINDSPOT AI</strong> audits what's left unsaid: identifying critical information gaps, contradictory stipulations, outdated guidelines, and unsubstantiated claims across official portals and PDFs.
+              Standard AI summarizes what it finds. <strong className="text-white font-semibold">BLINDSPOT AI</strong> audits what is left unsaid: identifying critical information gaps, contradictory stipulations, outdated guidelines, and unsubstantiated claims across official portals and PDFs.
             </p>
 
-            {/* Futuristic CTAs */}
+            {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={handleLaunchClick}
-                className="hud-corner animate-shimmer relative flex items-center space-x-3 px-7 py-4 rounded-xl text-sm font-mono font-black uppercase tracking-wider bg-gradient-to-r from-[#00d2ff] via-[#00a8ff] to-[#e2b65c] text-black shadow-xl shadow-[#00d2ff]/30 hover:shadow-[#00d2ff]/50 transition-all hover:scale-105 active:scale-95"
+                className="flex items-center space-x-3 px-6 py-3.5 rounded-xl text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all hover:scale-102 active:scale-98"
               >
-                <span>LAUNCH SCHOLARSHIP DEMO</span>
-                <ArrowRight className="w-4 h-4 text-black" />
+                <span>Launch Research Demo</span>
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
 
               <button
                 onClick={handleSecondaryClick}
-                className="hud-corner-gold flex items-center space-x-2 px-6 py-4 rounded-xl text-sm font-mono font-bold bg-[#060a1a] hover:bg-[#091129] border border-[#e2b65c]/40 text-[#e2b65c] hover:border-[#e2b65c] transition-all hover:scale-102"
+                className="flex items-center space-x-2 px-6 py-3.5 rounded-xl text-sm font-semibold bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 transition-all"
               >
-                <Terminal className="w-4 h-4" />
-                <span>SIGN IN / REGISTER</span>
+                <span>Sign In / Register</span>
               </button>
             </div>
 
+            {/* Multi-Domain Coverage Badges */}
+            <div className="pt-4 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-slate-400 mr-1 font-medium">Auditing 4 Critical Sectors:</span>
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/25">
+                <GraduationCap className="w-3.5 h-3.5" />
+                <span>Education Grants</span>
+              </span>
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/25">
+                <Stethoscope className="w-3.5 h-3.5" />
+                <span>Clinical Protocols</span>
+              </span>
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/25">
+                <Scale className="w-3.5 h-3.5" />
+                <span>EU AI Regulation</span>
+              </span>
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">
+                <Zap className="w-3.5 h-3.5" />
+                <span>Clean Energy Tax</span>
+              </span>
+            </div>
+
             {/* Trust Telemetry Grid */}
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-cyan-500/20">
-              <div className="hud-corner bg-[#060a1a]/60 p-3 rounded-lg border border-cyan-500/20">
-                <div className="text-2xl font-black text-[#00d2ff] font-mono text-glow-cyan">100%</div>
-                <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Traceable Citations</div>
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-800">
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="text-2xl font-black text-emerald-400 font-sans">100%</div>
+                <div className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">Traceable Citations</div>
               </div>
-              <div className="hud-corner-gold bg-[#060a1a]/60 p-3 rounded-lg border border-[#e2b65c]/20">
-                <div className="text-2xl font-black text-[#e2b65c] font-mono text-glow-gold">SSRF</div>
-                <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Immune Ingestion</div>
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="text-2xl font-black text-indigo-400 font-sans">SSRF</div>
+                <div className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">Immune Ingestion</div>
               </div>
-              <div className="hud-corner bg-[#060a1a]/60 p-3 rounded-lg border border-emerald-500/20">
-                <div className="text-2xl font-black text-emerald-400 font-mono">0.03s</div>
-                <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">Verification Speed</div>
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="text-2xl font-black text-amber-400 font-sans">0.03s</div>
+                <div className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider">Verification Speed</div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right 3D Celestial Hologram */}
+          {/* Right 3D Celestial Mesh */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
             className="lg:col-span-5 relative"
           >
-            <div className="hud-corner relative rounded-2xl glass-panel p-4 glow-cyan overflow-hidden">
-              <div className="absolute top-4 left-4 z-10 flex items-center space-x-2 px-3 py-1 rounded-md bg-[#02040a]/90 border border-cyan-500/40 text-[10px] font-mono text-[#00d2ff]">
-                <span className="w-2 h-2 rounded-full bg-[#00d2ff] animate-ping" />
-                <span>CYBER ORBITAL MESH</span>
+            <div className="panel-card p-5 bg-[#121827]/90 border border-slate-800 overflow-hidden shadow-2xl shadow-black/60">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div className="flex items-center space-x-2 text-xs font-semibold text-slate-200">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Real-Time Intelligence Mesh</span>
+                </div>
+                <span className="text-[11px] font-mono text-indigo-400 font-semibold">
+                  ACTIVE NODES: 1,420+
+                </span>
               </div>
               
-              <ThreeEvidenceGlobe className="h-[380px] w-full" />
+              <ThreeEvidenceGlobe className="h-[360px] w-full" />
 
-              {/* Live Epistemic Telemetry Cards */}
-              <div className="space-y-2 mt-2">
-                <div className="flex items-center justify-between p-3 rounded-lg bg-[#060a1a]/90 border border-amber-500/40 text-xs">
-                  <div className="flex items-center space-x-2 text-amber-400 font-mono font-bold">
+              {/* Realistic Telemetry Insight Cards */}
+              <div className="space-y-2 mt-3">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-amber-500/30 text-xs">
+                  <div className="flex items-center space-x-2 text-amber-400 font-semibold">
                     <FileQuestion className="w-4 h-4 shrink-0" />
-                    <span>GAP IDENTIFIED:</span>
+                    <span>Identified Gap:</span>
                   </div>
-                  <span className="text-[11px] text-slate-300 font-mono">Renewal GPA omitted in 2026 portal</span>
+                  <span className="text-[11px] text-slate-300">Renewal GPA condition omitted in 2026 portal</span>
                 </div>
 
-                <div className="flex items-center justify-between p-3 rounded-lg bg-[#060a1a]/90 border border-rose-500/40 text-xs">
-                  <div className="flex items-center space-x-2 text-rose-400 font-mono font-bold">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-rose-500/30 text-xs">
+                  <div className="flex items-center space-x-2 text-rose-400 font-semibold">
                     <AlertTriangle className="w-4 h-4 shrink-0" />
-                    <span>CONFLICT:</span>
+                    <span>Factual Conflict:</span>
                   </div>
-                  <span className="text-[11px] text-slate-300 font-mono">$65,000 Portal vs $50,000 Advisory</span>
+                  <span className="text-[11px] text-slate-300">$65k Portal vs $50k Advisory Guide</span>
                 </div>
               </div>
             </div>
@@ -179,75 +197,75 @@ export const LandingHero: React.FC<{ onGetStarted: () => void }> = ({ onGetStart
       </div>
 
       {/* Six Pillars of Blindspot Intelligence */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 border-t border-cyan-500/20">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 border-t border-slate-800/80">
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-block text-[#e2b65c] font-mono text-xs uppercase tracking-widest font-bold">
-            ARCHITECTURE MATRIX
+          <div className="inline-block text-indigo-400 font-mono text-xs uppercase tracking-widest font-bold">
+            EPISTEMIC CAPABILITIES
           </div>
-          <h2 className="text-3xl font-black text-white font-mono tracking-tight">
-            THE SIX PILLARS OF BLINDSPOT INTELLIGENCE
+          <h2 className="text-3xl font-bold text-white tracking-tight">
+            The Six Pillars of Blindspot Intelligence
           </h2>
           <p className="text-slate-400 text-sm">
-            Built specifically to solve the dangerous limitations of standard LLM research and prevent costly misjudgments.
+            Engineered specifically to overcome the silent omissions of traditional LLMs and prevent costly research misjudgments.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="hud-corner p-6 rounded-xl glass-card space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-[#00d2ff]">
-              <Search className="w-6 h-6" />
+          <div className="interactive-card p-6 bg-[#121827]/80 space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+              <Search className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white font-mono">AI Goal Decomposer</h3>
+            <h3 className="text-base font-bold text-white">AI Goal Decomposer</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Deconstructs broad research inquiries into atomic, structured verification criteria with explicit importance ratings.
+              Deconstructs broad inquiries into atomic, structured verification criteria with explicit importance ratings.
             </p>
           </div>
 
-          <div className="hud-corner-gold p-6 rounded-xl glass-card space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-amber-500/10 border border-[#e2b65c]/40 flex items-center justify-center text-[#e2b65c]">
-              <FileQuestion className="w-6 h-6" />
+          <div className="interactive-card p-6 bg-[#121827]/80 space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <FileQuestion className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white font-mono">Epistemic Gap Detection</h3>
+            <h3 className="text-base font-bold text-white">Epistemic Gap Detection</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Differentiates between verified proof, partial coverage, and unaddressed stipulations without hallucinating false negatives.
+              Differentiates between verified proof, partial coverage, and unaddressed stipulations without hallucinating omissions.
             </p>
           </div>
 
-          <div className="hud-corner p-6 rounded-xl glass-card space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
-              <GitCompare className="w-6 h-6" />
+          <div className="interactive-card p-6 bg-[#121827]/80 space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
+              <GitCompare className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white font-mono">Contradiction Intelligence</h3>
+            <h3 className="text-base font-bold text-white">Contradiction Intelligence</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Identifies direct factual divergences between sources while discerning scope, eligibility differences, and temporal supersessions.
+              Identifies direct factual divergences between sources while discerning scope, eligibility differences, and temporal changes.
             </p>
           </div>
 
-          <div className="hud-corner p-6 rounded-xl glass-card space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-400">
-              <History className="w-6 h-6" />
+          <div className="interactive-card p-6 bg-[#121827]/80 space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+              <History className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white font-mono">Temporal Decay Engine</h3>
+            <h3 className="text-base font-bold text-white">Temporal Decay Engine</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Discovers missing publication dates, expired deadlines, and superseded policy editions published in prior fiscal years.
             </p>
           </div>
 
-          <div className="hud-corner-gold p-6 rounded-xl glass-card space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-              <Fingerprint className="w-6 h-6" />
+          <div className="interactive-card p-6 bg-[#121827]/80 space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <Fingerprint className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white font-mono">Cryptographic Traceability</h3>
+            <h3 className="text-base font-bold text-white">Cryptographic Traceability</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Every single finding links directly to SHA-256 fingerprinted source passages via an interactive React Flow DAG.
             </p>
           </div>
 
-          <div className="hud-corner p-6 rounded-xl glass-card space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
-              <FileCheck2 className="w-6 h-6" />
+          <div className="interactive-card p-6 bg-[#121827]/80 space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+              <FileCheck2 className="w-5 h-5" />
             </div>
-            <h3 className="text-lg font-bold text-white font-mono">Decision Readiness Index</h3>
+            <h3 className="text-base font-bold text-white">Decision Readiness Index</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Computes an explainable 0–100 score breaking down coverage, source reliability, and penalty deductions mathematically.
             </p>
@@ -256,24 +274,24 @@ export const LandingHero: React.FC<{ onGetStarted: () => void }> = ({ onGetStart
       </div>
 
       {/* Security Architecture Highlight */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 border-t border-cyan-500/20">
-        <div className="hud-corner rounded-2xl bg-gradient-to-r from-[#030611] via-[#060a1a] to-[#0d1326] p-8 border border-cyan-500/30">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 border-t border-slate-800/80">
+        <div className="panel-card p-8 bg-[#121827]/90 border border-slate-800">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-[#e2b65c] text-xs font-mono font-bold uppercase">
+            <div className="space-y-2.5">
+              <div className="flex items-center space-x-2 text-indigo-400 text-xs font-mono font-bold uppercase">
                 <Lock className="w-4 h-4" />
-                <span>DEFENSE-IN-DEPTH SECURITY ARCHITECTURE</span>
+                <span>Defense-in-Depth Security Architecture</span>
               </div>
-              <h3 className="text-2xl font-black text-white font-mono">HARDENED BACKEND & ZERO TRUST</h3>
+              <h3 className="text-2xl font-bold text-white">Hardened Backend & Zero-Trust Isolation</h3>
               <p className="text-slate-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
                 Zero plain-text credentials, memory-hard Argon2id key derivation, pre-flight DNS validation against SSRF & cloud metadata endpoints (169.254.169.254), magic-byte file screening (%PDF-), and object-level multi-tenancy.
               </p>
             </div>
             <div className="flex items-center space-x-3 shrink-0">
-              <div className="px-4 py-2 rounded-lg bg-[#02040a] border border-cyan-500/40 text-xs font-mono text-[#00d2ff]">
+              <div className="px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-emerald-400 font-semibold">
                 Argon2id (RFC 9106)
               </div>
-              <div className="px-4 py-2 rounded-lg bg-[#02040a] border border-[#e2b65c]/40 text-xs font-mono text-[#e2b65c]">
+              <div className="px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-indigo-400 font-semibold">
                 DNS SSRF Shield
               </div>
             </div>

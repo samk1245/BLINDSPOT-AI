@@ -96,37 +96,52 @@ export const App: React.FC = () => {
     setInvTab('studio');
   };
 
+  const handleSeedAllDemos = async () => {
+    if (!user) {
+      await quickDemoLogin();
+    }
+    try {
+      const res = await apiClient.post<{ message: string; count: number }>('/investigations/seed-all-demos');
+      await fetchInvestigations();
+      const updatedList = await apiClient.get<Investigation[]>('/investigations');
+      if (updatedList.data.length > 0) {
+        setActiveInvestigation(updatedList.data[0]);
+      }
+    } catch (err) {
+      console.error('Failed to seed demos', err);
+    }
+  };
+
   const handleLaunchScholarshipDemo = async () => {
     if (!user) {
       await quickDemoLogin();
     }
     try {
-      // 1. Create scholarship draft
       const draft = await apiClient.post<Investigation>('/investigations', {
         title: 'National STEM Excellence Fellowship (Demo)',
         research_question: 'What should I verify before applying for the 2026 STEM Fellowship?',
         objective: 'Identify eligibility limits, renewal clauses, conflicting documents, and deadlines.',
         domain: 'Education & Grants',
       });
-      // 2. Load demo dataset & trigger analysis
       await apiClient.post(`/investigations/${draft.data.id}/load-demo-data`);
       const updated = await apiClient.get<Investigation>(`/investigations/${draft.data.id}`);
       
       await fetchInvestigations();
       setActiveInvestigation(updated.data);
       setCurrentView('investigation');
-      setInvTab('gaps'); // Directly showcase the detected gaps & contradictions
+      setInvTab('gaps');
     } catch (err) {
       console.error('Failed to launch demo', err);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#02040a] text-slate-100 flex flex-col font-sans bg-cyber-grid bg-radial-nebula">
+    <div className="min-h-screen bg-graphite-mesh text-slate-100 flex flex-col font-sans">
       <Navigation
         currentView={currentView}
         setCurrentView={setCurrentView}
         hasActiveInvestigation={Boolean(activeInvestigation)}
+        onSeedAllDemos={handleSeedAllDemos}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-8">
@@ -151,6 +166,7 @@ export const App: React.FC = () => {
               setCurrentView('investigation');
             }}
             onLaunchDemo={handleLaunchScholarshipDemo}
+            onSeedAllDemos={handleSeedAllDemos}
           />
         )}
 
@@ -158,16 +174,16 @@ export const App: React.FC = () => {
         {currentView === 'investigation' && (
           <div className="space-y-6">
             {activeInvestigation && (
-              /* Sub-Navigation for Active Investigation */
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-cyan-500/20 pb-3">
-                <div className="flex flex-wrap items-center space-x-1.5 bg-[#060a17]/90 p-1.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
+              /* Multi-Chromatic Sub-Navigation for Active Investigation */
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-3">
+                <div className="flex flex-wrap items-center space-x-1.5 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 text-xs">
                   <button
                     onClick={() => {
                       cyberAudio.playClick();
                       setInvTab('studio');
                     }}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-                      invTab === 'studio' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      invTab === 'studio' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <span>Overview & Sources</span>
@@ -178,11 +194,11 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setInvTab('requirements');
                     }}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-                      invTab === 'requirements' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      invTab === 'requirements' ? 'bg-sky-500/20 text-sky-300 border border-sky-500/35 shadow-sm' : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    <Layers className="w-3.5 h-3.5" />
+                    <Layers className="w-3.5 h-3.5 text-sky-400" />
                     <span>Requirements Matrix</span>
                   </button>
 
@@ -191,11 +207,11 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setInvTab('gaps');
                     }}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-                      invTab === 'gaps' ? 'bg-[#e2b65c]/20 text-[#e2b65c] border border-[#e2b65c]/40 shadow-[0_0_12px_rgba(226,182,92,0.25)]' : 'text-slate-400 hover:text-white'
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      invTab === 'gaps' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/35 shadow-sm' : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    <AlertTriangle className="w-3.5 h-3.5 text-[#e2b65c]" />
+                    <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
                     <span>Gaps & Conflicts</span>
                   </button>
 
@@ -204,11 +220,11 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setInvTab('graph');
                     }}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-                      invTab === 'graph' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      invTab === 'graph' ? 'bg-violet-500/20 text-violet-300 border border-violet-500/35 shadow-sm' : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    <Network className="w-3.5 h-3.5" />
+                    <Network className="w-3.5 h-3.5 text-violet-400" />
                     <span>Evidence Graph</span>
                   </button>
 
@@ -217,11 +233,11 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setInvTab('copilot');
                     }}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-                      invTab === 'copilot' ? 'bg-[#00d2ff]/20 text-[#00d2ff] border border-[#00d2ff]/40 shadow-[0_0_12px_rgba(0,210,255,0.25)]' : 'text-slate-400 hover:text-white'
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      invTab === 'copilot' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/35 shadow-sm' : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    <ListTodo className="w-3.5 h-3.5" />
+                    <ListTodo className="w-3.5 h-3.5 text-rose-400" />
                     <span>Verification Copilot</span>
                   </button>
 
@@ -230,8 +246,8 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setInvTab('readiness');
                     }}
-                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-                      invTab === 'readiness' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.25)]' : 'text-slate-400 hover:text-white'
+                    className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                      invTab === 'readiness' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/35 shadow-sm' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     <Scale className="w-3.5 h-3.5 text-emerald-400" />
@@ -245,9 +261,9 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setShowReportModal(true);
                     }}
-                    className="hud-corner flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#060a17] border border-cyan-500/30 hover:border-[#00d2ff] text-slate-200 text-xs font-mono font-bold transition-all"
+                    className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 text-xs font-semibold transition-all"
                   >
-                    <FileText className="w-3.5 h-3.5 text-[#00d2ff]" />
+                    <FileText className="w-3.5 h-3.5 text-indigo-400" />
                     <span>Report Dossier</span>
                   </button>
 
@@ -256,7 +272,7 @@ export const App: React.FC = () => {
                       cyberAudio.playClick();
                       setActiveInvestigation(null);
                     }}
-                    className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-[#060a17] hover:bg-slate-800 border border-cyan-500/20 text-slate-300 text-xs font-mono font-bold transition-all"
+                    className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-semibold transition-all"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>New</span>

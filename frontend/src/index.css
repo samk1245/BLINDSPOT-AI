@@ -4,192 +4,93 @@
 
 @layer base {
   body {
-    background-color: #02040a;
+    background-color: #0b0f17;
     color: #e2e8f0;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Cyber Grid & Nebula Background */
-.bg-cyber-grid {
-  background-size: 40px 40px;
+/* Subtle, Realistic Graphite Mesh Texture (No cheesy lasers/neons) */
+.bg-graphite-mesh {
+  background-color: #0b0f17;
   background-image: 
-    linear-gradient(to right, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 210, 255, 0.04) 1px, transparent 1px);
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(245, 158, 11, 0.03) 0px, transparent 50%);
 }
 
-.bg-radial-nebula {
-  background: radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.12) 0%, rgba(154, 108, 255, 0.07) 35%, rgba(2, 4, 10, 0) 70%),
-              radial-gradient(circle at 80% 60%, rgba(226, 182, 92, 0.08) 0%, rgba(2, 4, 10, 0) 50%);
+/* Realistic Glass Panels & Cards */
+.panel-card {
+  background: rgba(18, 24, 39, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 14px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Glass Panels with HUD aesthetic */
-.glass-panel {
-  background: rgba(6, 10, 23, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 210, 255, 0.15);
+.panel-card:hover {
+  border-color: rgba(100, 116, 139, 0.7);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
-.glass-panel-gold {
-  background: rgba(18, 14, 6, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 182, 92, 0.25);
+.interactive-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card {
-  background: rgba(9, 14, 30, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 210, 255, 0.15);
-  transition: all 0.25s ease-in-out;
+.interactive-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
-.glass-card:hover {
-  border-color: rgba(0, 210, 255, 0.4);
-  box-shadow: 0 0 25px -4px rgba(0, 210, 255, 0.25);
+/* Multi-Chromatic Domain Accents */
+.badge-education {
+  background: rgba(14, 165, 233, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
-/* HUD Corner Brackets */
-.hud-corner {
-  position: relative;
+.badge-healthcare {
+  background: rgba(244, 63, 94, 0.12);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.3);
 }
 
-.hud-corner::before,
-.hud-corner::after {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  pointer-events: none;
-  transition: all 0.3s ease;
+.badge-legal {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-.hud-corner::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid #00d2ff;
-  border-left: 2px solid #00d2ff;
+.badge-financial {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.hud-corner::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid #00d2ff;
-  border-right: 2px solid #00d2ff;
+.badge-defense {
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
-.hud-corner-gold::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid #e2b65c;
-  border-left: 2px solid #e2b65c;
-}
-
-.hud-corner-gold::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid #e2b65c;
-  border-right: 2px solid #e2b65c;
-}
-
-/* Neon Glows */
-.glow-cyan {
-  box-shadow: 0 0 25px -3px rgba(0, 210, 255, 0.35);
-}
-
-.glow-gold {
-  box-shadow: 0 0 25px -3px rgba(226, 182, 92, 0.35);
-}
-
-.glow-violet {
-  box-shadow: 0 0 25px -3px rgba(154, 108, 255, 0.35);
-}
-
-.text-glow-cyan {
-  text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-}
-
-.text-glow-gold {
-  text-shadow: 0 0 12px rgba(226, 182, 92, 0.6);
-}
-
-/* Cyber Shimmer Animation */
-@keyframes cyber-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-
-.animate-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.animate-shimmer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 210, 255, 0.2),
-    rgba(226, 182, 92, 0.25),
-    transparent
-  );
-  transform: translateX(-100%);
-  animation: cyber-shimmer 3.5s infinite;
-  pointer-events: none;
-}
-
-/* Marquee scrolling ticker */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 25s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Scanline animation */
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(1000%); }
-}
-
-.scanline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.6), transparent);
-  animation: scanline 8s linear infinite;
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-/* Custom scrollbars */
+/* Smooth Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #02040a;
+  background: #0b0f17;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0f172a;
+  background: #1e293b;
   border-radius: 4px;
-  border: 1px solid rgba(0, 210, 255, 0.2);
+  border: 1px solid rgba(51, 65, 85, 0.4);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00d2ff;
+  background: #334155;
 }
