@@ -40,12 +40,12 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="border-b border-cyan-500/20 bg-[#02040a]/90 backdrop-blur-xl sticky top-0 z-50 px-4 lg:px-8 py-3 transition-all relative">
-      {/* Top micro-line glow in Sphinx Cyber Cyan */}
+      {/* Top micro-line glow in Cyber Cyan */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#00d2ff] to-transparent opacity-60" />
 
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
-        {/* Logo and Sphinx-Inspired Brand */}
+        {/* Logo and Cyber Brand */}
         <div 
           onClick={() => handleNavClick(user ? 'dashboard' : 'landing')} 
           className="flex items-center space-x-3 cursor-pointer group"
@@ -66,7 +66,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             <p className="text-[10px] text-slate-400 font-mono tracking-tight flex items-center space-x-1.5">
               <span>DISCOVER WHAT'S MISSING</span>
               <span className="text-slate-600">•</span>
-              <span className="text-[#e2b65c] font-semibold">SPHINX EDITION</span>
+              <span className="text-[#00d2ff] font-semibold">ENTERPRISE INTELLIGENCE</span>
             </p>
           </div>
         </div>

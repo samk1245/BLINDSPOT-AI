@@ -1,4 +1,4 @@
-// Lightweight Web Audio API synthesizer for Sphinx-grade cyber acoustic feedback
+// Lightweight Web Audio API synthesizer for acoustic feedback
 // Safe: Runs completely in browser memory, respects user mute toggle
 
 class CyberAudioSystem {

@@ -57,7 +57,7 @@ function CyberStarfield({ count = 350 }: { count?: number }) {
   );
 }
 
-// Sphinx Gyroscopic Orbital Rings
+// Gyroscopic Orbital Rings
 function OrbitalRings() {
   const ring1Ref = useRef<THREE.Group>(null!);
   const ring2Ref = useRef<THREE.Group>(null!);

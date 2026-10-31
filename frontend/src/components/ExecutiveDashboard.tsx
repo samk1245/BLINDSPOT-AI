@@ -115,7 +115,7 @@ export const ExecutiveDashboard: React.FC<ExecutiveDashboardProps> = ({
         <div className="space-y-1">
           <div className="flex items-center space-x-2 text-[#00d2ff] font-mono text-xs uppercase font-bold">
             <Activity className="w-4 h-4 text-[#00d2ff] animate-pulse" />
-            <span>SPHINX EPISTEMIC TELEMETRY</span>
+            <span>EPISTEMIC AUDIT TELEMETRY</span>
           </div>
           <h2 className="text-2xl font-black text-white font-mono tracking-tight">RESEARCH INTELLIGENCE OPERATIONS</h2>
           <p className="text-xs text-slate-400 font-mono">

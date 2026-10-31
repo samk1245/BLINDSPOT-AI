@@ -40,7 +40,7 @@ export const LandingHero: React.FC<{ onGetStarted: () => void }> = ({ onGetStart
       {/* Laser Scanline Beam Effect */}
       <div className="scanline" />
 
-      {/* SPHINX LIVE TELEMETRY MARQUEE TICKER */}
+      {/* LIVE TELEMETRY MARQUEE TICKER */}
       <div className="border-y border-cyan-500/20 bg-[#030611]/80 backdrop-blur-md overflow-hidden py-2 select-none">
         <div className="animate-marquee flex items-center space-x-8 text-xs font-mono tracking-wider">
           <span className="flex items-center space-x-2 text-[#00d2ff]">
@@ -86,10 +86,10 @@ export const LandingHero: React.FC<{ onGetStarted: () => void }> = ({ onGetStart
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-6"
           >
-            {/* Sphinx Tech Badge */}
+            {/* Tech Badge */}
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#060a1a] border border-[#00d2ff]/40 text-[#00d2ff] text-xs font-mono tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-[#00d2ff] animate-pulse" />
-              <span>SPHINX EDITION • EPISTEMIC INTELLIGENCE</span>
+              <span>EPISTEMIC RESEARCH INTELLIGENCE</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] font-mono">
@@ -103,7 +103,7 @@ export const LandingHero: React.FC<{ onGetStarted: () => void }> = ({ onGetStart
               Standard AI summarizes what it finds. <strong className="text-[#00d2ff] font-semibold">BLINDSPOT AI</strong> audits what's left unsaid: identifying critical information gaps, contradictory stipulations, outdated guidelines, and unsubstantiated claims across official portals and PDFs.
             </p>
 
-            {/* Futuristic Sphinx CTAs */}
+            {/* Futuristic CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={handleLaunchClick}

@@ -158,7 +158,7 @@ export const App: React.FC = () => {
         {currentView === 'investigation' && (
           <div className="space-y-6">
             {activeInvestigation && (
-              /* Sphinx Sub-Navigation for Active Investigation */
+              /* Sub-Navigation for Active Investigation */
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-cyan-500/20 pb-3">
                 <div className="flex flex-wrap items-center space-x-1.5 bg-[#060a17]/90 p-1.5 rounded-xl border border-cyan-500/20 text-xs font-mono">
                   <button
@@ -319,14 +319,14 @@ export const App: React.FC = () => {
         {currentView === 'admin' && <AdminPanel />}
       </main>
 
-      {/* Sphinx Cyber Footer */}
+      {/* Cyber Footer */}
       <footer className="border-t border-cyan-500/20 bg-[#02040a] py-6 text-center text-xs text-slate-400 mt-auto font-mono">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 rounded-full bg-[#00d2ff] animate-ping" />
             <span className="font-bold text-slate-200">BLINDSPOT AI</span>
             <span className="text-slate-600">•</span>
-            <span>SPHINX EPISTEMIC RESEARCH EDITION</span>
+            <span>EPISTEMIC RESEARCH INTELLIGENCE</span>
           </div>
           <div className="flex items-center space-x-3 text-[11px]">
             <span className="text-[#00d2ff]">RFC 9106 ARGON2ID</span>
