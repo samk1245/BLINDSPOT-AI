@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blindspot-ai
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DEBUG=false
+      - APP_NAME="BLINDSPOT AI"
+      - SECRET_KEY=CHANGE_THIS_TO_SECURE_PRODUCTION_SECRET_KEY
+      - DATABASE_URL=sqlite:///./blindspot.db
+      - AI_PROVIDER=offline
+      - HOST=0.0.0.0
+      - PORT=8000
+    restart: unless-stopped
+    volumes:
+      - blindspot_data:/app/backend/uploads
+
+volumes:
+  blindspot_data:
