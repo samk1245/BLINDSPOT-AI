@@ -1,0 +1,1901 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "ec2af7f4-3196-44eb-b19d-d5faefd94e07",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "app_secrets",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "audit_logs",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "conflicts",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "information_gaps",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "investigations",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "evidence_passages",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "investigation_reports",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "research_requirements",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "sources",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "verification_tasks",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "users",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_secrets"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "value",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_secrets"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "app_secrets"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "action",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "resource_type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "resource_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "ip_address",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "details",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "investigation_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "claim_a_text",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "claim_b_text",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_a_title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_b_title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_a_url",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_b_url",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_a_date",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_b_date",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'DIRECT_FACTUAL'",
+      "generated": null,
+      "identity": null,
+      "name": "conflict_type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "difference_explanation",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'HIGH'",
+      "generated": null,
+      "identity": null,
+      "name": "priority",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "resolution_guidance",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "investigation_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "requirement_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "gap_title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'General'",
+      "generated": null,
+      "identity": null,
+      "name": "category",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'MISSING'",
+      "generated": null,
+      "identity": null,
+      "name": "classification",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'HIGH'",
+      "generated": null,
+      "identity": null,
+      "name": "impact_level",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "suggested_action",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "epistemic_note",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "research_question",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "objective",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'General'",
+      "generated": null,
+      "identity": null,
+      "name": "domain",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'DRAFT'",
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "double precision",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0",
+      "generated": null,
+      "identity": null,
+      "name": "readiness_score",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'{}'",
+      "generated": null,
+      "identity": null,
+      "name": "readiness_breakdown",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "source_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "passage_index",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "text",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0",
+      "generated": null,
+      "identity": null,
+      "name": "char_offset_start",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0",
+      "generated": null,
+      "identity": null,
+      "name": "char_offset_end",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "investigation_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "summary",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "report_json",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "html_content",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "investigation_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'GENERAL'",
+      "generated": null,
+      "identity": null,
+      "name": "category",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "description",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'HIGH'",
+      "generated": null,
+      "identity": null,
+      "name": "importance",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "expected_evidence",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "verification_criteria",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'UNVERIFIED'",
+      "generated": null,
+      "identity": null,
+      "name": "coverage_status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0",
+      "generated": null,
+      "identity": null,
+      "name": "position",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "investigation_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'URL'",
+      "generated": null,
+      "identity": null,
+      "name": "source_type",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "url",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "domain",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "retrieval_timestamp",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "publication_date",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "last_updated_date",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "raw_content",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "content_hash",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "double precision",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0.8",
+      "generated": null,
+      "identity": null,
+      "name": "reliability_score",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'PARSED'",
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "investigation_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "reason_it_matters",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "suggested_official_source",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "supporting_evidence_snippet",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'HIGH'",
+      "generated": null,
+      "identity": null,
+      "name": "priority",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'PENDING'",
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "name": "is_completed",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "completed_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "notes",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "hashed_password",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "full_name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'USER'",
+      "generated": null,
+      "identity": null,
+      "name": "role",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "true",
+      "generated": null,
+      "identity": null,
+      "name": "is_active",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "users"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "created_at",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "audit_created_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "audit_logs"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "investigation_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "conflicts_inv_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "investigation_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "gaps_inv_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "investigations_user_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "source_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "passages_source_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "investigation_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "reports_inv_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "investigation_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "requirements_inv_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "investigation_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "sources_inv_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "investigation_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "tasks_inv_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "investigation_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "investigations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "conflicts_investigation_id_investigations_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "conflicts"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "investigation_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "investigations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "information_gaps_investigation_id_investigations_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "information_gaps"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "users",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "investigations_user_id_users_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "investigations"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "source_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "sources",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "evidence_passages_source_id_sources_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "evidence_passages"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "investigation_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "investigations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "investigation_reports_investigation_id_investigations_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "investigation_reports"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "investigation_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "investigations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "research_requirements_investigation_id_investigations_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "research_requirements"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "investigation_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "investigations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "sources_investigation_id_investigations_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "sources"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "investigation_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "investigations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "verification_tasks_investigation_id_investigations_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "verification_tasks"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "app_secrets_pkey",
+      "schema": "public",
+      "table": "app_secrets",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "audit_logs_pkey",
+      "schema": "public",
+      "table": "audit_logs",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "conflicts_pkey",
+      "schema": "public",
+      "table": "conflicts",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "information_gaps_pkey",
+      "schema": "public",
+      "table": "information_gaps",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "investigations_pkey",
+      "schema": "public",
+      "table": "investigations",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "evidence_passages_pkey",
+      "schema": "public",
+      "table": "evidence_passages",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "investigation_reports_pkey",
+      "schema": "public",
+      "table": "investigation_reports",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "research_requirements_pkey",
+      "schema": "public",
+      "table": "research_requirements",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "sources_pkey",
+      "schema": "public",
+      "table": "sources",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "verification_tasks_pkey",
+      "schema": "public",
+      "table": "verification_tasks",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "users_pkey",
+      "schema": "public",
+      "table": "users",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "nullsNotDistinct": false,
+      "name": "users_email_key",
+      "schema": "public",
+      "table": "users",
+      "entityType": "uniques"
+    }
+  ],
+  "renames": []
+}
